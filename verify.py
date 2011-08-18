@@ -13,7 +13,7 @@ def verify_python(answers):
         result = subprocess.check_output(shlex.split(cmd))[:-1]
         index = int(pyfile.split('/')[-1].split('.')[0][2:]) - 1
         assert result == answers[index]
-    print 'python files verified'
+    print 'python files verified, total %s files' % len(pyfiles)
     os.chdir(olddir)
 
 def verify_java(answers):
@@ -28,7 +28,7 @@ def verify_java(answers):
         result = subprocess.check_output(shlex.split(cmd))[:-1]
         index = int(javafile.split('/')[-1].split('.')[0][2:]) - 1
         assert result == answers[index]
-    print 'java files verified'
+    print 'java files verified, total %s files' % len(javafiles)
     os.chdir(olddir)
 
 def verify_c(answers):
@@ -43,22 +43,22 @@ def verify_c(answers):
         result = subprocess.check_output(shlex.split(cmd))[:-1]
         index = int(cfile.split('/')[-1].split('.')[0][2:]) - 1
         assert result == answers[index]
-    print 'c files verified'
+    print 'c files verified, total %s files' % len(cfiles)
     os.chdir(olddir)
 
 def verify_cpp(answers):
     olddir = os.getcwd()
     os.chdir('cpp')
-    cfiles = glob.glob('*.cpp')
-    for cfile in cfiles:
-        cmd = 'g++ -Wall %s' % cfile
+    cppfiles = glob.glob('*.cpp')
+    for cppfile in cppfiles:
+        cmd = 'g++ -Wall %s' % cppfile
         result = subprocess.check_output(shlex.split(cmd))[:-1]
         assert result == ''
         cmd = './a.out'
         result = subprocess.check_output(shlex.split(cmd))[:-1]
-        index = int(cfile.split('/')[-1].split('.')[0][2:]) - 1
+        index = int(cppfile.split('/')[-1].split('.')[0][2:]) - 1
         assert result == answers[index]
-    print 'cpp files verified'
+    print 'cpp files verified, total %s files' % len(cppfiles)
     os.chdir(olddir)
 
 def load_answers():
