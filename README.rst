@@ -11,3 +11,9 @@ getanswers.py
 -------------
 this script is used to get the answers of the problems I solved and store them
 in a file answers.txt
+
+------------
+getpdf.py
+-----------
+this script is used to download all the pdfs of the problems I solved if there
+is any.
