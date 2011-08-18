@@ -1,5 +1,6 @@
 #include <stdio.h>
 
+int f(int, int);
 int main (int argc, char const* argv[])
 {
     printf("%d\n", f(3, 1000) + f(5, 1000) - f(3 * 5, 1000));
