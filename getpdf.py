@@ -4,6 +4,7 @@ import urllib
 import urllib2
 import re
 import getpass
+import os
 
 class PE():
     def __init__(self, username, password):
@@ -19,23 +20,25 @@ class PE():
                 }
         self.opener.open("http://projecteuler.net", 
                 urllib.urlencode(self.params))
-        self.getanswers()
+        self.getpdfs()
     
-    def getanswers(self):
-        self.pattern = re.compile(r'<b>(-?\d+)</b>')
-        self.url = "http://projecteuler.net/index.php?section=problems&id=%s"
-        self.answers = []
+    def getpdfs(self):
+        self.solved = re.compile(r'<img src=".*?icon_tick.png" alt="Solved"')
+        self.pattern = re.compile(r'(project/resources/.*?overview.pdf)')
+        self.url = "http://projecteuler.net/index.php?section=problems&page=%s"
+        self.domain = "http://projecteuler.net/"
         i = 1
         while True:
             response = self.opener.open(self.url % i)
-            result = self.pattern.findall(response.read())
-            if result:
-                self.answers.append(result[0])
-                i += 1
-            else:
-                with open('answers.txt', 'w') as f:
-                    f.write('\n'.join(self.answers))
+            data = response.read()
+            result = self.solved.findall(data)
+            if not result:
                 break
+            pdfs = self.pattern.findall(data)
+            for pdf in pdfs:
+                os.system('wget %s/%s -O tmp/%s' % (self.domain, pdf,
+                    pdf.split('/')[-1]))
+            i += 1
 
 def main():
     username = raw_input('input your projecteuler username: ')
