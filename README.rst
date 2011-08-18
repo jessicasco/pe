@@ -17,3 +17,8 @@ getpdf.py
 -----------
 this script is used to download all the pdfs of the problems I solved if there
 is any.
+
+------------
+verify.py
+------------
+this script is used the verify the answers of the files already written.
