@@ -36,7 +36,7 @@ def verify_c(answers):
     os.chdir('c')
     cfiles = glob.glob('*.c')
     for cfile in cfiles:
-        cmd = 'gcc -Wall %s' % cfile
+        cmd = 'gcc -Wall -std=c99 -lm %s' % cfile
         result = subprocess.check_output(shlex.split(cmd))[:-1]
         assert result == ''
         cmd = './a.out'

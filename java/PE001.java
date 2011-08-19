@@ -1,4 +1,4 @@
-class PE001 {
+public class PE001 {
     public static void main(String[] ars) {
         System.out.println(f(3, 1000) + f(5, 1000) - f(3 * 5, 1000));
     }

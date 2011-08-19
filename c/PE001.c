@@ -7,7 +7,7 @@ int main (int argc, char const* argv[])
     return 0;
 }
 
-int f(a, b) {
+int f(int a, int b) {
     int n = (b - 1) / a;
     return a * (n * (n + 1) / 2);
 }
