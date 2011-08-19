@@ -2,24 +2,34 @@
 
 def main():
     """
-    odd, (even, odd, odd,) even,....
-    a, b, a+b, a+2b, 2a+3b, 3a+5b, 5a+8b, 8a+13b
-    8a+13b = 4*(2a+3b) + 1*b
-    from f(n+2) = f(n+1) + f(n)
-    we can conclude:
-    f(n+6) = 4*f(n+3) + 1*f(n)
-    This is another seqence:
-    g(n+2) = 4*f(n+1) + 1*f(n)
+    odd, (even, odd, odd), (even, odd, odd), ...
+    So slicing out every 3 number of the Fibonacci sequence results in the 
+    sequence of all the even-valued terms in the Fibonacci sequence.
+    f(n) = f(n-1) + f(n-2)
+    f(n+6) = f(n+5) + f(n+4)
+           = (f(n+4) + f(n+3)) + f(n+4)
+           = 2*f(n+4) + f(n+3)
+           = 2*(f(n+3) + f(n+2)) + f(n+3)
+           = 3*f(n+3) + 2*f(n+2)
+           = 3*f(n+3) + (f(n+2) + (f(n+1) + f(n)))
+           = 3*f(n+3) + (f(n+2) + f(n+1)) + f(n)
+           = 3*f(n+3) + f(n+3) + f(n)
+           = 4*f(n+3) + f(n)
+    The new sequence: 
+    F(n+2) = 4*F(n+1) + F(n)
+    with F(0) = 2, F(1) = 8
     """
+    n = 4000000
     a = 2
     b = 8
-    s = 2 + 8
-    c = 4*b + a
-    while c <= 4000000:
+    s = a + b
+    c = 4 * b + a
+    while c < n:
         s += c
         a = b
         b = c
-        c = 4*b + a
+        c = 4 * b + a
     print s
+
 if __name__ == '__main__':
     main()
