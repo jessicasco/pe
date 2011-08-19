@@ -1,7 +1,8 @@
 #!/usr/bin/ev python
 
 def f(a, b):
-    n = (b - 1) / a
+    '''compute the sum of multiples of a below b'''
+    n = (b - 1) / a # the number of multiples of a below b
     return a * (n * (n + 1) / 2)
 
 
