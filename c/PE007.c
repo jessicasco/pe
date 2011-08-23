@@ -1,8 +1,22 @@
 #include <stdio.h>
 #include <math.h>
 
-int isPrime(int n)
-{
+int isPrime(int n);
+
+int main() {
+    int limit = 10001;
+    int count = 1;
+    int candidate = 1;
+    do{
+        candidate += 2;
+        if(isPrime(candidate))
+            count++;
+    }while(count < limit);
+    printf("%d\n", candidate);
+    return 0;
+}
+
+int isPrime(int n) {
     if(n == 1)
         return 0;
     else if(n < 4)
@@ -25,18 +39,4 @@ int isPrime(int n)
         }
     }
     return 1;
-}
-
-int main()
-{
-    int limit = 10001;
-    int count = 1;
-    int candidate = 1;
-    do{
-        candidate += 2;
-        if(isPrime(candidate))
-            count++;
-    }while(count < limit);
-    printf("%d\n", candidate);
-    return 0;
 }

@@ -2,6 +2,22 @@
 #include <cmath>
 using namespace std;
 
+bool isPrime(int n);
+
+int main()
+{
+    int limit = 10001;
+    int count = 1;
+    int candidate = 1;
+    do{
+        candidate += 2;
+        if(isPrime(candidate))
+            count++;
+    }while(count < limit);
+    cout << candidate << endl;
+    return 0;
+}
+
 bool isPrime(int n)
 {
     if(n == 1)
@@ -26,17 +42,4 @@ bool isPrime(int n)
         }
     }
     return true;
-}
-int main()
-{
-    int limit = 10001;
-    int count = 1;
-    int candidate = 1;
-    do{
-        candidate += 2;
-        if(isPrime(candidate))
-            count++;
-    }while(count < limit);
-    cout << candidate << endl;
-    return 0;
 }

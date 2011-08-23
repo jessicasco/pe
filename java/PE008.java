@@ -15,9 +15,11 @@ public class PE008
         s = sb.toString();
         int max = 0;
         int i = 0;
-        int temp;
         for(; i <= s.length() - 5; i++) {
-            temp = (s.charAt(i)-'0') * (s.charAt(i+1)-'0') * (s.charAt(i+2)-'0') * (s.charAt(i+3)-'0') * (s.charAt(i+4)-'0');
+            int temp = 1;
+            for (int j = 0; j < 5; j++) {
+                temp *= s.charAt(i+j) - '0';
+            }
             if(temp > max)
                 max = temp;
         }

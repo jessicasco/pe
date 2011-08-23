@@ -1,5 +1,8 @@
 #include <stdio.h>
 
+int reverse(int n);
+int isPalindrome(int n);
+
 int main(int argc, const char *argv[])
 {
     int max = 0;
@@ -21,18 +24,7 @@ int main(int argc, const char *argv[])
             if (max != 0 && s <= max) {
                 break;
             }
-            int c[100], i = 0, j;
-            int s1 = s;
-            while (s1) {
-                c[i++] = s1 % 10;
-                s1 /= 10;
-            }
-            for(j=0, i-=1; i > j; i-=1, j+=1) {
-                if (c[i] != c[j]) {
-                    break;
-                }
-            }
-            if(i <= j) {
+            if (isPalindrome(s)) {
                 max = s;
             }
             b -= step;
@@ -41,3 +33,19 @@ int main(int argc, const char *argv[])
     printf("%d\n", max);
     return 0;
 }
+
+int reverse(int n)
+{
+    int reverse = 0;
+    while(n > 0){
+        reverse = 10*reverse + n%10;
+        n /= 10;
+    }
+    return reverse;
+}
+
+int isPalindrome(int n)
+{
+    return n == reverse(n);
+}
+
