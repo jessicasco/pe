@@ -22,7 +22,8 @@ class PE():
         self.getanswers()
     
     def getanswers(self):
-        self.pattern = re.compile(r'<b>(-?\d+)</b>')
+        self.pattern = r'Answer:</div></td>\s*<td>\n<b>(-?\d+)</b>'
+        self.pattern = re.compile(self.pattern)
         self.url = "http://projecteuler.net/index.php?section=problems&id=%s"
         self.answers = []
         i = 1
