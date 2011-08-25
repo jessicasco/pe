@@ -23,8 +23,7 @@ main() {
         cd python
         fname=`printf "PE%03d.py" $i`
         timeout=`( time python $fname )  2>&1 1>/dev/null`
-        timeout=`echo $timeout | awk '{ print $1 "\t" $2 "<br>" $3 "\t" $4 "<br>" $5 "\t" $6 "<br>" }'`
-        report="$report <td>$timeout</td>"
+        report="$report <td><pre>$timeout</pre></td>"
         cd ..
 
         cd java
@@ -32,7 +31,7 @@ main() {
         javac $fname
         timeout=`( time java ${fname%.java} )  2>&1 1>/dev/null`
         timeout=`echo $timeout | awk '{ print $1 "\t" $2 "<br>" $3 "\t" $4 "<br>" $5 "\t" $6 "<br>" }'`
-        report="$report <td>$timeout</td>"
+        report="$report <td><pre>$timeout</pre></td>"
         cd ..
 
         cd cpp
@@ -40,7 +39,7 @@ main() {
         g++ -Wall -lm $fname
         timeout=`( time ./a.out )  2>&1 1>/dev/null`
         timeout=`echo $timeout | awk '{ print $1 "\t" $2 "<br>" $3 "\t" $4 "<br>" $5 "\t" $6 "<br>" }'`
-        report="$report <td>$timeout</td>"
+        report="$report <td><pre>$timeout</pre></td>"
         cd ..
 
         cd c
@@ -48,7 +47,7 @@ main() {
         gcc -Wall -lm -std=c99 $fname
         timeout=`( time ./a.out )  2>&1 1>/dev/null`
         timeout=`echo $timeout | awk '{ print $1 "\t" $2 "<br>" $3 "\t" $4 "<br>" $5 "\t" $6 "<br>" }'`
-        report="$report <td>$timeout</td>"
+        report="$report <td><pre>$timeout</pre></td>"
         cd ..
 
         report="$report </tr>"
