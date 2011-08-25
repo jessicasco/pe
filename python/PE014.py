@@ -1,22 +1,20 @@
 #!/usr/bin/env python
 
-data = {}
-def getLength(n):
-    length = 1
-    while n != 1:
-        if n in data:
-            return length + data[n]
-        if n % 2 == 0:
-            n /= 2
-        else:
-            n = 3*n + 1
-        length += 1
-    return length
-
 def main():
+    data = {}
     maxlen = 0
     for i in range(1, 1000000):
-        length = getLength(i)
+        length = 1
+        n = i
+        while n != 1:
+            if n in data:
+                length =  length + data[n]
+                break
+            if n % 2 == 0:
+                n /= 2
+            else:
+                n = 3*n + 1
+            length += 1
         data[i] = length
         if length > maxlen:
             maxlen = length
