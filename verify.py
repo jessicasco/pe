@@ -12,7 +12,7 @@ def verify_python(answers):
         cmd = 'python %s' % pyfile
         result = subprocess.check_output(shlex.split(cmd))[:-1]
         index = int(pyfile.split('/')[-1].split('.')[0][2:]) - 1
-        assert result == answers[index]
+        assert result == answers[index], index
     print 'python files verified, total %s files' % len(pyfiles)
     os.chdir(olddir)
 
@@ -27,7 +27,7 @@ def verify_java(answers):
         cmd = 'java %s' % javafile.split('.')[0]
         result = subprocess.check_output(shlex.split(cmd))[:-1]
         index = int(javafile.split('/')[-1].split('.')[0][2:]) - 1
-        assert result == answers[index]
+        assert result == answers[index], index
     print 'java   files verified, total %s files' % len(javafiles)
     os.chdir(olddir)
 
@@ -42,7 +42,7 @@ def verify_c(answers):
         cmd = './a.out'
         result = subprocess.check_output(shlex.split(cmd))[:-1]
         index = int(cfile.split('/')[-1].split('.')[0][2:]) - 1
-        assert result == answers[index]
+        assert result == answers[index], index
     print 'c      files verified, total %s files' % len(cfiles)
     os.chdir(olddir)
 
@@ -57,7 +57,7 @@ def verify_cpp(answers):
         cmd = './a.out'
         result = subprocess.check_output(shlex.split(cmd))[:-1]
         index = int(cppfile.split('/')[-1].split('.')[0][2:]) - 1
-        assert result == answers[index]
+        assert result == answers[index], index
     print 'cpp    files verified, total %s files' % len(cppfiles)
     os.chdir(olddir)
 
