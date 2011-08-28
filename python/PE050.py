@@ -39,7 +39,7 @@ def main():
             t.append(i)
     length = 0
     for i in range(len(t)):
-        Sum = 0
+        Sum = sum(t[i:i+length])
         for j in range(i+length, len(t)):
             Sum += t[j]
             if Sum > 1000000:

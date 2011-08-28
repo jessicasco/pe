@@ -13,7 +13,7 @@ public class PE050
         int result = 0;
         for(int i = 0; i < t; i++) {
             int sum = 0; 
-            for(int j = i+length; j < t; j++) {
+            for(int j = i; j < t; j++) {
                 sum += a[j];
                 if(sum > 1000000)
                     break;

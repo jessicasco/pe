@@ -39,7 +39,7 @@ int main()
     }
     for(i = 0; i < j; i++){
         sum = 0;
-        for(k = i+length; k < j; k++){
+        for(k = i; k < j; k++){
             sum += a[k];
             if(sum > 1000000)
                 break;
