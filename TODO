@@ -1,3 +1,6 @@
 verify.py:
     1.Thread
     2.collect all the filenames with the wrong answer
+
+python/PE050.py:
+    in report.html time exceeds 1m.
