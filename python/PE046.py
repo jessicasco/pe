@@ -1,16 +1,5 @@
 #!/usr/bin/env python
-import math
-
-def isPrime(n):
-    if n < 2:
-        return False
-    m = int(math.sqrt(n))
-    i = 2
-    while i <= m:
-        if n%i == 0:
-            return False
-        i += 1
-    return True
+from PE007 import isPrime
 
 def isCon(i):
     j = 1

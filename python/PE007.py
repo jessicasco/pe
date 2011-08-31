@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 import math
-
 """
 Some useful facts:
 1. 1 is not a prime.
