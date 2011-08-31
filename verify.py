@@ -3,63 +3,100 @@ import subprocess
 import shlex
 import glob
 import os
+import threading
 
 def verify_python(answers):
-    olddir = os.getcwd()
-    os.chdir('python')
-    pyfiles = glob.glob('*.py')
+    curdir = os.path.abspath(os.path.dirname(__file__))
+    curdir += '/python'
+    pyfiles = glob.glob(curdir + '/' + '*.py')
+    wrongpyfiles = []
     for pyfile in pyfiles:
-        cmd = 'python %s' % pyfile
-        result = subprocess.check_output(shlex.split(cmd))[:-1]
-        index = int(pyfile.split('/')[-1].split('.')[0][2:]) - 1
-        assert result == answers[index], index
+        pyfilename = pyfile.split('/')[-1]
+        #print pyfilename, '  checked:', 
+        cmd = 'python %s' % pyfilename
+        result = subprocess.check_output(shlex.split(cmd), cwd=curdir)[:-1]
+        index = int(pyfilename.split('.')[0][2:]) - 1
+        if result == answers[index]:
+            pass
+            #print 'OK!'
+        else:
+            #print 'Not right!'
+            wrongpyfiles.append(pyfilename)
     print 'python files verified, total %s files' % len(pyfiles)
-    os.chdir(olddir)
+    if wrongpyfiles:
+        print 'These python file(s) need fix(es):', " ".join(wrongpyfiles)
 
 def verify_java(answers):
-    olddir = os.getcwd()
-    os.chdir('java')
-    javafiles = glob.glob('*.java')
+    curdir = os.path.abspath(os.path.dirname(__file__))
+    curdir += '/java'
+    javafiles = glob.glob(curdir + '/' + '*.java')
+    wrongjavafiles = []
     for javafile in javafiles:
-        cmd = 'javac %s' % javafile
-        result = subprocess.check_output(shlex.split(cmd))[:-1]
+        javafilename = javafile.split('/')[-1]
+        #print javafilename, 'checked:', 
+        cmd = 'javac %s' % javafilename
+        result = subprocess.check_output(shlex.split(cmd), cwd=curdir)[:-1]
         assert result == ''
-        cmd = 'java %s' % javafile.split('.')[0]
-        result = subprocess.check_output(shlex.split(cmd))[:-1]
-        index = int(javafile.split('/')[-1].split('.')[0][2:]) - 1
-        assert result == answers[index], index
+        cmd = 'java %s' % javafilename.split('.')[0]
+        result = subprocess.check_output(shlex.split(cmd), cwd=curdir)[:-1]
+        index = int(javafilename.split('.')[0][2:]) - 1
+        if result == answers[index]:
+            pass
+            #print 'OK!'
+        else:
+            #print 'Not right!'
+            wrongjavafiles.append(javafilename)
     print 'java   files verified, total %s files' % len(javafiles)
-    os.chdir(olddir)
+    if wrongjavafiles:
+        print 'These file(s) need fix(es):', " ".join(wrongjavafiles)
 
 def verify_c(answers):
-    olddir = os.getcwd()
-    os.chdir('c')
-    cfiles = glob.glob('*.c')
+    curdir = os.path.abspath(os.path.dirname(__file__))
+    curdir += '/c'
+    cfiles = glob.glob(curdir + '/' + '*.c')
+    wrongcfiles = []
     for cfile in cfiles:
-        cmd = 'gcc -Wall -std=c99 -lm %s' % cfile
-        result = subprocess.check_output(shlex.split(cmd))[:-1]
+        cfilename = cfile.split('/')[-1]
+        #print cfilename, '   checked:', 
+        cmd = 'gcc -Wall -std=c99 -lm %s' % cfilename
+        result = subprocess.check_output(shlex.split(cmd), cwd=curdir)[:-1]
         assert result == ''
         cmd = './a.out'
-        result = subprocess.check_output(shlex.split(cmd))[:-1]
-        index = int(cfile.split('/')[-1].split('.')[0][2:]) - 1
-        assert result == answers[index], index
+        result = subprocess.check_output(shlex.split(cmd), cwd=curdir)[:-1]
+        index = int(cfilename.split('.')[0][2:]) - 1
+        if result == answers[index]:
+            pass
+            #print 'OK!'
+        else:
+            #print 'Not right!'
+            wrongcfiles.append(cfilename)
     print 'c      files verified, total %s files' % len(cfiles)
-    os.chdir(olddir)
+    if wrongcfiles:
+        print 'These file(s) need fix(es):', " ".join(wrongcfiles)
 
 def verify_cpp(answers):
-    olddir = os.getcwd()
-    os.chdir('cpp')
-    cppfiles = glob.glob('*.cpp')
+    curdir = os.path.abspath(os.path.dirname(__file__))
+    curdir += '/cpp'
+    cppfiles = glob.glob(curdir + '/' + '*.cpp')
+    wrongcppfiles = []
     for cppfile in cppfiles:
-        cmd = 'g++ -Wall %s' % cppfile
-        result = subprocess.check_output(shlex.split(cmd))[:-1]
+        cppfilename = cppfile.split('/')[-1]
+        #print cppfilename, ' checked:', 
+        cmd = 'g++ -Wall %s' % cppfilename
+        result = subprocess.check_output(shlex.split(cmd), cwd=curdir)[:-1]
         assert result == ''
         cmd = './a.out'
-        result = subprocess.check_output(shlex.split(cmd))[:-1]
-        index = int(cppfile.split('/')[-1].split('.')[0][2:]) - 1
-        assert result == answers[index], index
+        result = subprocess.check_output(shlex.split(cmd), cwd=curdir)[:-1]
+        index = int(cppfilename.split('.')[0][2:]) - 1
+        if result == answers[index]:
+            pass
+            #print 'OK!'
+        else:
+            #print 'Not right!'
+            wrongcppfiles.append(cppfilename)
     print 'cpp    files verified, total %s files' % len(cppfiles)
-    os.chdir(olddir)
+    if wrongcppfiles:
+        print 'These file(s) need fix(es):', " ".join(wrongcppfiles)
 
 def load_answers():
     answers = []
@@ -72,10 +109,10 @@ def load_answers():
 
 def main():
     answers = load_answers()
-    verify_python(answers)
-    verify_java(answers)
-    verify_c(answers)
-    verify_cpp(answers)
+    threading.Thread(target=verify_python, args=(answers,)).start()
+    threading.Thread(target=verify_java, args=(answers,)).start()
+    threading.Thread(target=verify_c, args=(answers,)).start()
+    threading.Thread(target=verify_cpp, args=(answers,)).start()
 
 if __name__ == '__main__':
     main()
