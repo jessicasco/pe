@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+import os
 
 def isValid(a, b):
     if a >= 0 and a <= 19 and b >= 0 and b <= 19:
@@ -6,7 +7,8 @@ def isValid(a, b):
     return False
 
 def main():
-    data = [map(int, line[:-1].split()) for line in open("PE011.txt")]
+    datafile = os.path.abspath(__file__)[:-2] + 'txt'
+    data = [map(int, line[:-1].split()) for line in open(datafile)]
     maxProduct = 0
     for a in range(20):
         for b in range(20):

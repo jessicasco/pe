@@ -1,7 +1,9 @@
 #!/usr/bin/env python
+import os
 
 def main():
-    data = sorted(open("PE022.txt").read().split(','))
+    datafile = os.path.abspath(__file__)[:-2] + 'txt'
+    data = sorted(open(datafile).read().split(','))
     print sum(
             sum(ord(c)-ord('A')+1 for c in data[i] if c.isalpha()) * (i+1) 
             for i in range(len(data))

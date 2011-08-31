@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import math
+import os
 
 def isTriangle(n):
     t = int((-1+math.sqrt(1+8*n))/2)
@@ -8,7 +9,8 @@ def isTriangle(n):
     return False
 
 def main():
-    s = open("PE042.txt").readline().split(",")
+    datafile = os.path.abspath(__file__)[:-2] + 'txt'
+    s = open(datafile).readline().split(",")
     count = 0
     for t in s:
         Sum = 0

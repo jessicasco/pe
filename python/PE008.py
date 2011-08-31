@@ -1,7 +1,9 @@
 #!/usr/bin/env python
+import os
 
 def main():
-    n = map(int, ''.join(open('PE008.txt').read().splitlines()))
+    datafile = os.path.abspath(__file__)[:-2] + 'txt'
+    n = map(int, ''.join(open(datafile).read().splitlines()))
     l = len(n)
     maxProduct = 0
     i = 0
