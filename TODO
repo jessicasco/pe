@@ -1,9 +1,10 @@
-verify.py:
+1. verify.py:
     1.Thread (DONE)
     2.collect all the filenames with the wrong answer (DONE)
 
-python/PE050.py:
-    in report.html time exceeds 1m.
+2. python/PE050.py:
+    1. in report.html time exceeds 1m.(DONE)
 
-need review:
-    031, 043
+3. need review:
+    1. 031
+    2. 043
