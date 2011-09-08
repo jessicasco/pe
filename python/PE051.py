@@ -35,10 +35,10 @@ def f(n):
                         strr = str(k)
                         rstr = ""
                         for jj in range(length-1):
-                            if (((ii>>jj)&1) == 1):
-                                rstr += (tmpList[jj]+stro)
+                            if ((ii>>jj)&1) == 1:
+                                rstr += tmpList[jj]+stro
                             else:
-                                rstr += (tmpList[jj]+strr)
+                                rstr += tmpList[jj]+strr
                         rnum = int(rstr + tmpList[-1])
                         if rnum not in primeList:
                             count2 += 1
