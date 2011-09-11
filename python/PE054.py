@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-
 """
 High Card = 0
 One Pair = 1
@@ -12,6 +11,102 @@ Four of a Kind = 7
 Straight Flush = 8
 Royal Flush = 9
 """
+
+def isOnePair(s):
+    s.sort()
+    for i in range(len(s)-1):
+        if s[i][0] == s[i+1][0]:
+            return True
+    return False
+
+def isTwoPairs(s):
+    s.sort()
+    if s[0][0] == s[1][0] and s[1][0] != s[2][0] and s[2][0] == s[3][0]:
+        return True
+    if s[0][0] == s[1][0] and s[1][0] != s[3][0] and s[3][0] == s[4][0]:
+        return True
+    if s[1][0] == s[2][0] and s[2][0] != s[3][0] and s[3][0] == s[4][0]:
+        return True
+    return False
+
+def isThreeOfAKind(s):
+    s.sort()
+    if s[0][0] == s[2][0] or s[1][0] == s[3][0] or s[2][0] == s[4][0]:
+        return True
+    return False
+
+def isStraight(s):
+    m = []
+    for i in s:
+        if i[0] == 'T':
+            m.append(10)
+        elif i[0] == 'J':
+            m.append(11)
+        elif i[0] == 'Q':
+            m.append(12)
+        elif i[0] == 'K':
+            m.append(13)
+        elif i[0] == 'A':
+            m.append(14)
+        else:
+            m.append(int(i[0]))
+    m.sort()
+    for i in range(4):
+        if (m[i] + 1) != m[i+1]:
+            return False
+            break
+    else:
+        return True
+
+def isFlush(s):
+    for i in range(4):
+        if s[i][1] != s[4][1]:
+            return False
+    return True
+
+def isFullHouse(s):
+    s.sort()
+    if s[0][0] == s[2][0] and s[3][0] == s[4][0]:
+        return True
+    if s[0][0] == s[1][0] and s[2][0] == s[4][0]:
+        return True
+    return False
+
+def isFourOfAKind(s):
+    s.sort()
+    if s[0][0] == s[3][0] or s[1][0] == s[4][0]:
+        return True
+    return False
+
+def isStraightFlush(s):
+    if isStraight(s) and isFlush(s):
+        return True
+    return False
+
+def isRoyalFlush(s):
+    if isStraightFlush(s):
+        s.sort()
+        if s[0][0] == 'A':
+            return True
+    return False
+
+def rank(s):
+    predicates = [
+            isOnePair, isTwoPairs, isThreeOfAKind, isStraight, isFlush,
+            isFullHouse, isFourOfAKind, isStraightFlush, isRoyalFlush
+            ]
+    return max([i+1 for i in range(len(predicates)) if predicates[i](s)] + [0])
+
+def value(s):
+    m = []
+    d = {'T': 10, 'J':11, 'Q':12, 'K':13, 'A':14 }
+    for i in s:
+        if i[0] in d:
+            m.append(d[i[0]])
+        else:
+            m.append(int(i[0]))
+    m.sort()
+    return m
 
 def f1(s):
     for i in range(len(s)-1):
@@ -43,113 +138,6 @@ def f3(s):
             a.reverse()
             t += a
             return t
-
-def value(s):
-    m = []
-    for i in s:
-        if i[0] == 'T':
-            m.append(10)
-        elif i[0] == 'J':
-            m.append(11)
-        elif i[0] == 'Q':
-            m.append(12)
-        elif i[0] == 'K':
-            m.append(13)
-        elif i[0] == 'A':
-            m.append(14)
-        else:
-            m.append(int(i[0]))
-    m.sort()
-    return m
-
-def isOnePair(s):
-    s.sort()
-    for i in range(len(s)-1):
-        if s[i][0] == s[i+1][0]:
-            return True
-    return False
-
-def isTwoPairs(s):
-    s.sort()
-    if s[0][0] == s[1][0] and s[1][0] != s[2][0] and s[2][0] == s[3][0]:
-        return True
-    if s[0][0] == s[1][0] and s[1][0] != s[3][0] and s[3][0] == s[4][0]:
-        return True
-    if s[1][0] == s[2][0] and s[2][0] != s[3][0] and s[3][0] == s[4][0]:
-        return True
-    return False
-
-def isThreeOfAKind(s):
-    s.sort()
-    if s[0][0] == s[2][0] or s[1][0] == s[3][0] or s[2][0] == s[4][0]:
-        return True
-    return False
-
-def isFullHouse(s):
-    s.sort()
-    if s[0][0] == s[2][0] and s[3][0] == s[4][0]:
-        return True
-    if s[0][0] == s[1][0] and s[2][0] == s[4][0]:
-        return True
-    return False
-
-def isFourOfAKind(s):
-    s.sort()
-    if s[0][0] == s[3][0] or s[1][0] == s[4][0]:
-        return True
-    return False
-
-def isStraight(s):
-    m = []
-    for i in s:
-        if i[0] == 'T':
-            m.append(10)
-        elif i[0] == 'J':
-            m.append(11)
-        elif i[0] == 'Q':
-            m.append(12)
-        elif i[0] == 'K':
-            m.append(13)
-        elif i[0] == 'A':
-            m.append(14)
-        else:
-            m.append(int(i[0]))
-    m.sort()
-    for i in range(4):
-        if (m[i] + 1) != m[i+1]:
-            return False
-            break
-    else:
-        return True
-
-def rank(s):
-    result = 0
-    isFlush = False
-    for i in range(4):
-        if s[i][1] != s[4][1]:
-            break
-    else:
-        isFlush = True
-        result = 5
-    if isFlush:
-        if isStraight(s):
-            result = 8
-            s.sort()
-            if s[0][0] == 'A':
-                result = 9
-    elif isStraight(s):
-        result = 4
-    elif isOnePair(s):
-        result = 1
-        if isTwoPairs(s):
-            result = 2
-        if isThreeOfAKind(s):
-            result = 3
-            if isFullHouse(s):
-                result = 6
-            if isFourOfAKind(s):
-                result = 7
-    return result
 
 def main():
     count = 0
