@@ -10,5 +10,6 @@
     2. 043
     3. 060: lowest sum
     4. 070: time exceeds 1m.
+    4. 075: time exceeds 1m.
 
 4. ant file to help build java src and reorganize the code hiereachy
