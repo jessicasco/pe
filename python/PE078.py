@@ -1,5 +1,8 @@
 #!/usr/bin/env python
 """
+use the function form PE076 doesn't make sense, that takes too long.
+"""
+"""
 p(0) = 1; p(k) = 0, (k<=0)
 p(n) = p(n-1) + p(n-2) -p(n-5) -p(n-7) + ... +
 p(n) = (-1)^(k-1)*p(n-(3*k*k-k)/2) + (-1)^(k-1)*p(n-(3*k*k+k)/2)+...(n>=1)
