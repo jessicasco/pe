@@ -10,7 +10,7 @@ def getPhi(n):
     for i in range(len(primelist)):
         l = primelist[i]
         m = l
-        while l <= 1000000:
+        while l <= n:
             res[l-2] *= (m-1)
             res[l-2] /= m
             l += m
