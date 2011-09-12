@@ -4,9 +4,9 @@ Euler's totient function:
     http://en.wikipedia.org/wiki/Euler's_totient_function
 """
 from PE010 import getPrimeList
-def main():
-    primelist = getPrimeList(1000000)
-    res = [i for i in range(2,1000001)]
+def getPhi(n):
+    primelist = getPrimeList(n)
+    res = [i for i in range(2, n+1)]
     for i in range(len(primelist)):
         l = primelist[i]
         m = l
@@ -14,6 +14,10 @@ def main():
             res[l-2] *= (m-1)
             res[l-2] /= m
             l += m
+    return res
+
+def main():
+    res = getPhi(1000000)
     maximum = 0
     for i in range(len(res)):
         if (i+2)*1.0/res[i] > maximum:
