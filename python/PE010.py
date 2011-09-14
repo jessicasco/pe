@@ -40,7 +40,7 @@ Second version:
     Care about the index
 """
 def getPrimeList(limit):
-    sievebound = (limit-1) / 2
+    sievebound = (int(limit)-1) / 2
     sieve = [False] * (sievebound + 1)
     crosslimit = (int(math.sqrt(limit)) - 1) / 2
     for i in range(1, crosslimit+1):
