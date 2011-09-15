@@ -3,8 +3,6 @@
 pell equation:
     http://mathworld.wolfram.com/PellEquation.html
 """
-from fractions import gcd
-
 def getX(n):
     num = int(n**0.5)
     fz = 1.0
