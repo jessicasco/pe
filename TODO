@@ -6,14 +6,15 @@
     1. in report.html time exceeds 1m.(DONE)
 
 3. need review:
-    1. 031
-    2. 043
-    3. 060: lowest sum
-    4. 070: time exceeds 1m.
-    5. 075: time exceeds 1m.
-    6. 079: not a perfect solution
-    7. 084
-    8. 088
-    9. 094
+    01. 031
+    02. 043
+    03. 060: lowest sum
+    04. 070: time exceeds 1m.
+    05. 075: time exceeds 1m.
+    06. 079: not a perfect solution
+    07. 084
+    08. 088
+    09. 094
+    10. 098: time exceeds 1m.
 
 4. ant file to help build java src and reorganize the code hiereachy
