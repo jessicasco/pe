@@ -1,20 +1,11 @@
-1. verify.py:
-    1.Thread (DONE)
-    2.collect all the filenames with the wrong answer (DONE)
-
-2. python/PE050.py:
-    1. in report.html time exceeds 1m.(DONE)
-
-3. need review:
+1. need review:
     01. 031
     02. 043
     03. 060: lowest sum
-    04. 070: time exceeds 1m.
-    05. 075: time exceeds 1m.
-    06. 079: not a perfect solution
-    07. 084
-    08. 088
-    09. 094
-    10. 098: time exceeds 1m.
+    04. 079: not a perfect solution
+    05. 084
+    06. 088
+    07. 094
 
-4. ant file to help build java src and reorganize the code hiereachy
+2. run time exceeds 1m:
+    070, 075, 098
