@@ -1,10 +1,9 @@
 #!/usr/bin/env python
-from PE043 import perm
+import itertools
 def main():
     s = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-    a = perm(s)
     res = []
-    for t in a:
+    for t in itertools.permutations(s, 10):
         if t[1] < t[0] or t[2] < t[0] or t[3] < t[0] or t[4] < t[0]:
             continue
         b = t[0] + t[5] + t[6]
@@ -14,7 +13,6 @@ def main():
         else:
             if t[4] + t[9] + t[5] == b:
                 res.append(t)
-    
     result = []
     for x in res:
         s = ((str(x[0]) + str(x[5]) + str(x[6])) +

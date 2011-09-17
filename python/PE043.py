@@ -1,29 +1,18 @@
 #!/usr/bin/env python
-
-def perm(items, n=None):
-    if n is None:
-        n = len(items)
-    for i in range(len(items)):
-        v = items[i:i+1]
-        if n == 1:
-            yield v
-        else:
-            rest = items[:i] + items[i+1:]
-            for p in perm(rest, n-1):
-                yield v + p
+import itertools
 
 def main():
-    t = [2, 3, 5, 7, 11, 13, 17]
-    Sum = 0
-    a = perm("0123456789")
-    for i in a:
-        if i[0] == '0':continue
-        for j in range(7):
-            if int(i[j+1:j+4])%t[j] != 0:
+    primes = [2, 3, 5, 7, 11, 13, 17]
+    total = 0
+    for perm in itertools.permutations("0123456789", 10):
+        perm = "".join(perm)
+        if perm[0] == '0':continue
+        for i in range(7):
+            if int(perm[i+1:i+4]) % primes[i] != 0:
                 break
         else:
-            Sum += int(i)
-    print Sum
+            total += int(perm)
+    print total
 
 if __name__ == '__main__':
     main()

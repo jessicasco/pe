@@ -1,10 +1,9 @@
 1. need review:
-    01. 043
-    02. 060: lowest sum
-    03. 079: not a perfect solution
-    04. 084
-    05. 088
-    06. 094
+    01. 060: lowest sum
+    02. 079: not a perfect solution
+    03. 084
+    04. 088
+    05. 094
 
 2. run time exceeds 1m:
     070, 075, 098
