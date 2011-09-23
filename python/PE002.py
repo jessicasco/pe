@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-
 def main():
     """
     odd, (even, odd, odd), (even, odd, odd), ...

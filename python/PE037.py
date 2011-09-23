@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 from PE007 import isPrime
-
 def isTruncatable(n):
     m = str(n)
     while m != "":

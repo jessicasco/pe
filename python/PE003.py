@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-
 def main():
     n = 600851475143
     m = 1

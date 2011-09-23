@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 import math
 import itertools
-
 def isSquare(n):
     s = int(math.sqrt(n))
     if s*s == n:

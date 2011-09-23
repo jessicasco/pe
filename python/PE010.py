@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-
 """
 The Sieve of Eratosthenes:
     1. Make a list of all numbers from 2 to N
@@ -18,9 +17,6 @@ This is also the reason why to stop after reaching sqrt(N)
 import math
 
 """
-First version:
-"""
-"""
 def getPrimeList(limit):
     crosslimit = int(math.sqrt(limit))
     sieve = [False] * (limit+2)
@@ -35,9 +31,8 @@ def getPrimeList(limit):
 """
 
 """
-Second version:
-    Only take into considerations the odd number, then add 2.
-    Care about the index
+Only take into considerations the odd number, then add 2.
+ Care about the index
 """
 def getPrimeList(limit):
     sievebound = (int(limit)-1) / 2

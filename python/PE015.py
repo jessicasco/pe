@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-
 def factor(n):
     res = 1
     while n != 1:

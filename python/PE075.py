@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 from PE009 import getPythagoreanTriplet
-
 def isTrue(s):
     return sum(1 for i in getPythagoreanTriplet(s)) == 1
 

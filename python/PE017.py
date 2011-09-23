@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-
 def main():
     s = 0
     L = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"]

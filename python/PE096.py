@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 import copy
-
 Result = 0
-
 def solve(S):
     global Result
     def options(i,j):

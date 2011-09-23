@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 from fractions import gcd
-
 def main():
     d = 0
     n = 1

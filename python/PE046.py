@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 from PE007 import isPrime
-
 def isCon(i):
     j = 1
     while 2*j*j < i:

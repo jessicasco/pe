@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-
 def prime4(n):
     count = 0
     if not n%2:

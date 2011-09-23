@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 from copy import deepcopy
 from math import sqrt
-
 def isT(t):
     n = int((-1 + sqrt(1 + 8*t))/2)
     if (n*(n+1))/2 == t:

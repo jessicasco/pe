@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-
 def main():
     i = 1
     while True:

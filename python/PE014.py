@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-
 def main():
     data = {}
     maxlen = 0

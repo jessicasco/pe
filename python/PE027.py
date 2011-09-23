@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 from PE007 import isPrime
-
 def g(a, b, n):
     return n*n + a*n + b
 

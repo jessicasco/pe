@@ -1,5 +1,4 @@
 #!/usr/bin/python
-
 def next(L):
     n = len(L)
     i = n - 1

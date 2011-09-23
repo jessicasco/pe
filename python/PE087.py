@@ -26,6 +26,5 @@ def main():
                 count.append(c+b+a)
     print len(set(count))
 
-
 if __name__ == '__main__':
     main()

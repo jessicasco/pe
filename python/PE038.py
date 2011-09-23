@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-    
 def main():
     s = set(str(i) for i in range(1, 10))
     

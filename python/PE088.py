@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 from math import sqrt
- 
 def unique(t):
     u = {}
     for x in t: u[tuple(x)] = 1

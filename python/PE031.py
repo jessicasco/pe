@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-
 def dynamic():
     """
     Dynamic Programming

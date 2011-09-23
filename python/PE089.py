@@ -15,7 +15,6 @@ D = {
         'CM': 900,
         }
 N = dict((v, k) for k, v  in D.iteritems())
-
 def getSum(s):
     global D
     total = 0

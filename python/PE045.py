@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 import math
-
 def isT(n):
     x = int((-1+math.sqrt(1+8*n))/2)
     if x*(x+1)/2 == n:

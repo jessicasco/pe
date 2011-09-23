@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 from PE010 import getPrimeList
-
 def f(n):
     primeList = getPrimeList(n)
     subPrimeList = []

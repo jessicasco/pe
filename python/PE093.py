@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 import operator
 import itertools
-
 def getN(abcd):
     ops = [operator.add, operator.sub, operator.mul, operator.div]
     result = set()

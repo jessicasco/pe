@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 import math
- 
 def main():
     n = 35 + 85
     sqrt2 = 1.0 / math.sqrt(2)

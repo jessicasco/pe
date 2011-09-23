@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 from fractions import gcd
-
 def main():
     num = 1
     den = 2

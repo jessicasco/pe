@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-
 def isPalindromic(n):
     s = str(n)
     if s == s[::-1]:

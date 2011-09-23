@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-
 def numOfSolution(n):
     count = 0
     for a in range(3, n/3):

@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-
 def lengthOfRecurringCycle(n):
     L = []
     s = 10

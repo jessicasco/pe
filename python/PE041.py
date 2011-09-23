@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 from PE007 import isPrime
-
 def main():
     i = 9876543
     while True:

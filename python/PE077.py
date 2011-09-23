@@ -1,9 +1,7 @@
 #!/usr/bin/env python
 from PE010 import getPrimeList
-
 primeList = None
 D = {}
-
 def f(i,m):
     global primeList, D
     if (i, m) in D:

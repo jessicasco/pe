@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 from PE007 import isPrime
 from PE010 import getPrimeList
-
 def isConcatenatePrime(a, b):
     if isPrime(int(str(a)+str(b))) and isPrime(int(str(b)+str(a))):
         return True

@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 import math
-
 def isPentagonal(n):
     t = (1 + int(math.sqrt(1+24*n)))/6;
     if t*(3*t-1)/2 == n:

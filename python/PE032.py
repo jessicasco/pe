@@ -1,11 +1,9 @@
 #!/usr/bin/env python
-
-s = set(str(i) for i in range(1, 10))
-
+S = set(str(i) for i in range(1, 10))
 def isPandigital(a, b):
-    global s
-    ss = str(a) + str(b) + str(a/b)
-    if len(ss) == 9 and set(ss) == s:
+    global S
+    s = str(a) + str(b) + str(a/b)
+    if len(s) == 9 and set(s) == S:
         return True
     return False
 

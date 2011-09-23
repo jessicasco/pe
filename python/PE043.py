@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 import itertools
-
 def main():
     primes = [2, 3, 5, 7, 11, 13, 17]
     total = 0

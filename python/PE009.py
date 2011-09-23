@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-
 """
 Pythagorean Triplet(a, b, c): a*a + b*b == c*c.
 
@@ -16,9 +15,7 @@ with m<k<2*m and gcd(m,k)=1.
 Then set n=k-m, d=s/(2*m*k) and plug these in the previous 
 representation of (a,b,c)
 """
-
 import math, fractions
-
 def getPythagoreanTriplet(s):
     s2 = s / 2
     mlimit = int(math.ceil(math.sqrt(s2)))

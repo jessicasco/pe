@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-
 def main():
     a = 1
     b = 1

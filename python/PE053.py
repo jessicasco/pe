@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-
 def comb(n, r):
     res = 1.0
     for i in range(r):

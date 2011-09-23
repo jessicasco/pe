@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-
 """
 Let d(n) be the sum of divisors of n
 1. For any prime, p: d(p) = p + 1

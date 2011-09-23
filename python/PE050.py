@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 from PE007 import isPrime
 from PE010 import getPrimeList
-
 def main():
     t = getPrimeList(1000000)
     totallen = len(t)

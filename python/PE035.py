@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 from PE007 import isPrime
-
 def nextCircular(n):
     s = str(n)
     s = s[-1] + s[0:-1]

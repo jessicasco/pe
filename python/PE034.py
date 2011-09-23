@@ -1,11 +1,9 @@
 #!/usr/bin/env python
-
 """
 references:
     http://mathworld.wolfram.com/FactorialSums.html
     http://mathworld.wolfram.com/Factorion.html
 """
-
 def main():
     f = [1, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880]
     s = 0
