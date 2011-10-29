@@ -1,18 +1,28 @@
 #!/usr/bin/env python
-import math
+"""
+a^2 + b^2 = c^2 = (2*a + 1)^2
+or 
+a^2 + b^2 = c^2 = (2*a - 1)^2
+So:
+    (3*a+2)^2 - 3*(b^2) = 1
+    or
+    (3*a-2)^2 - 3*(b^2) = 1
+"""
 def main():
-    smax = int(math.sqrt(166666666))+1
-    p = 0
-    for s in xrange(1,smax):
-        s2 = s**2
-        r1 = math.sqrt(3*s2+1)
-        r_1 = math.sqrt(3*s2-1)
-        for x in [int(y) for y in [r1,r_1] if int(y) == y]:
-            for r in [2*s+x,2*s-x,x]:
-                r2 = r**2
-                if r>s and 3*(s2 + r2)<1e9:
-                    p += 2*(s2 + r2) + 2*min(r2-s2,2*r*s)
-    print p
+    a = 2
+    b = 1
+    result = 0
+    while True:
+        a, b = 2*a+3*b, 2*b+a
+        if 2*a-2 > 1000000000:
+            break
+        if (a-2) % 3 == 0:
+            result += 2*a-2 
+        if 2*a+2 > 1000000000:
+            break
+        if (a+2) % 3 == 0:
+            result += 2*a+2
+    print result
 
 if __name__ == '__main__':
      main()

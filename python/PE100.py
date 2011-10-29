@@ -20,9 +20,7 @@ def main():
     blue = 85
     bb = 2*85-1
     while total <= 1000000000000:
-        temp = a*tt + 2*b*bb
-        bb = b*tt + a*bb
-        tt = temp
+        tt, bb = a*tt + 2*b*bb, b*tt + a*bb
         total = (tt+1)/2
         blue = (bb+1)/2
     print blue
