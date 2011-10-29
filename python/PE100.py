@@ -1,28 +1,11 @@
 #!/usr/bin/env python
-from fractions import gcd
-def solve_pell():
-    num = 1
-    den = 2
-    while True:
-        if (num+den)*(num+den) - 2*den*den == 1:
-            return num+den, den
-        tmp = den
-        den = 2 * den + num
-        num = tmp
-        tmp = gcd(num, den)
-        den /= tmp
-        num /= tmp 
-
+import pell
 def main():
-    a, b = solve_pell()
-    total = 120
-    tt = 2*120-1
-    blue = 85
-    bb = 2*85-1
-    while total <= 1000000000000:
-        tt, bb = a*tt + 2*b*bb, b*tt + a*bb
+    for tt, bb in pell.pell_k(2, -1, 2*120-1, 2*85-1):
         total = (tt+1)/2
         blue = (bb+1)/2
+        if total > 1000000000000:
+            break
     print blue
 
 if __name__ == '__main__':
