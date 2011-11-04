@@ -1,6 +1,6 @@
 1. need review:
-    01. 060: lowest sum
-    02. 079: not a perfect solution
+    01. 060(DONE)
+    02. 079: not a perfect solution(ignore)
     03. 084
     04. 088
     05. 094(DONE)
@@ -8,4 +8,4 @@
     07. 100(DONE)
 
 2. run time exceeds 1m:
-    070, 075, 098
+    060, 070, 075, 098

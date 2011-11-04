@@ -6,37 +6,42 @@ def isConcatenatePrime(a, b):
         return True
     return False
 
-def f(n):
+def find(n, minimal, index):
     p = getPrimeList(n)
-    l = len(p)
-    for n0 in range(l):
-        for n1 in range(n0+1, l):
-            if not isConcatenatePrime(p[n0], p[n1]):
+    length = len(p)
+    for a in range(index, length):
+        if minimal and p[a] > minimal/5:
+            return True, minimal, a
+        for b in range(a+1, length):
+            if not isConcatenatePrime(p[a], p[b]):
                 continue
-            for n2 in range(n1+1, l):
-                if (not isConcatenatePrime(p[n0], p[n2]) 
-                        or not isConcatenatePrime(p[n1], p[n2])):
+            for c in range(b+1, length):
+                if (not isConcatenatePrime(p[a], p[c]) 
+                        or not isConcatenatePrime(p[b], p[c])):
                     continue
-                for n3 in range(n2+1, l):
-                    if (not isConcatenatePrime(p[n0], p[n3])
-                            or not isConcatenatePrime(p[n1], p[n3])
-                            or not isConcatenatePrime(p[n2], p[n3])):
+                for d in range(c+1, length):
+                    if (not isConcatenatePrime(p[a], p[d])
+                            or not isConcatenatePrime(p[b], p[d])
+                            or not isConcatenatePrime(p[c], p[d])):
                         continue
-                    for n4 in range(n3+1, l):
-                        if (not isConcatenatePrime(p[n0], p[n4])
-                                or not isConcatenatePrime(p[n1], p[n4])
-                                or not isConcatenatePrime(p[n2], p[n4])
-                                or not isConcatenatePrime(p[n3], p[n4])):
+                    for e in range(d+1, length):
+                        if (not isConcatenatePrime(p[a], p[e])
+                                or not isConcatenatePrime(p[b], p[e])
+                                or not isConcatenatePrime(p[c], p[e])
+                                or not isConcatenatePrime(p[d], p[e])):
                             continue
-                        print p[n0] + p[n1] + p[n2] + p[n3] + p[n4]
-                        return True
-    return False
+                        minimal = p[a] + p[b] + p[c] + p[d] + p[e]
+                        break
+    return False, minimal, length
 
 def main():
+    minimal = None
+    index = 1
     n = 10000
     while True:
-        res = f(n)
-        if res:
+        flag, minimal, index = find(n, minimal, index)
+        if flag:
+            print minimal
             break
         n *= 10
         

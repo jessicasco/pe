@@ -5,22 +5,30 @@ import glob
 import os
 import threading
 
+DEBUG = False
+
 def verify_python(answers):
+    excludefiles = ["pell.py"]
     curdir = os.path.abspath(os.path.dirname(__file__))
     curdir += '/python'
     pyfiles = glob.glob(curdir + '/' + '*.py')
     wrongpyfiles = []
     for pyfile in pyfiles:
         pyfilename = pyfile.split('/')[-1]
-        #print pyfilename, '  checked:', 
+        if pyfilename in excludefiles:
+            continue
+        if DEBUG:
+            print pyfilename, '  checked:', 
         cmd = 'python %s' % pyfilename
         result = subprocess.check_output(shlex.split(cmd), cwd=curdir)[:-1]
         index = int(pyfilename.split('.')[0][2:]) - 1
         if result == answers[index]:
             pass
-            #print 'OK!'
+            if DEBUG:
+                print 'OK!'
         else:
-            #print 'Not right!'
+            if DEBUG:
+                print 'Not right!'
             wrongpyfiles.append(pyfilename)
     print 'python files verified, total %s files' % len(pyfiles)
     if wrongpyfiles:
@@ -33,7 +41,8 @@ def verify_java(answers):
     wrongjavafiles = []
     for javafile in javafiles:
         javafilename = javafile.split('/')[-1]
-        #print javafilename, 'checked:', 
+        if DEBUG:
+            print javafilename, 'checked:', 
         cmd = 'javac %s' % javafilename
         result = subprocess.check_output(shlex.split(cmd), cwd=curdir)[:-1]
         assert result == ''
@@ -42,9 +51,11 @@ def verify_java(answers):
         index = int(javafilename.split('.')[0][2:]) - 1
         if result == answers[index]:
             pass
-            #print 'OK!'
+            if DEBUG:
+                print 'OK!'
         else:
-            #print 'Not right!'
+            if DEBUG:
+                print 'Not right!'
             wrongjavafiles.append(javafilename)
     print 'java   files verified, total %s files' % len(javafiles)
     if wrongjavafiles:
@@ -57,7 +68,8 @@ def verify_c(answers):
     wrongcfiles = []
     for cfile in cfiles:
         cfilename = cfile.split('/')[-1]
-        #print cfilename, '   checked:', 
+        if DEBUG:
+            print cfilename, '   checked:', 
         cmd = 'gcc -Wall -std=c99 -lm %s' % cfilename
         result = subprocess.check_output(shlex.split(cmd), cwd=curdir)[:-1]
         assert result == ''
@@ -66,9 +78,11 @@ def verify_c(answers):
         index = int(cfilename.split('.')[0][2:]) - 1
         if result == answers[index]:
             pass
-            #print 'OK!'
+            if DEBUG:
+                print 'OK!'
         else:
-            #print 'Not right!'
+            if DEBUG:
+                print 'Not right!'
             wrongcfiles.append(cfilename)
     print 'c      files verified, total %s files' % len(cfiles)
     if wrongcfiles:
@@ -81,7 +95,8 @@ def verify_cpp(answers):
     wrongcppfiles = []
     for cppfile in cppfiles:
         cppfilename = cppfile.split('/')[-1]
-        #print cppfilename, ' checked:', 
+        if DEBUG:
+            print cppfilename, ' checked:', 
         cmd = 'g++ -Wall %s' % cppfilename
         result = subprocess.check_output(shlex.split(cmd), cwd=curdir)[:-1]
         assert result == ''
@@ -90,9 +105,11 @@ def verify_cpp(answers):
         index = int(cppfilename.split('.')[0][2:]) - 1
         if result == answers[index]:
             pass
-            #print 'OK!'
+            if DEBUG:
+                print 'OK!'
         else:
-            #print 'Not right!'
+            if DEBUG:
+                print 'Not right!'
             wrongcppfiles.append(cppfilename)
     print 'cpp    files verified, total %s files' % len(cppfiles)
     if wrongcppfiles:
