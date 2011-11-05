@@ -30,7 +30,9 @@ def find(n, minimal, index):
                                 or not isConcatenatePrime(p[c], p[e])
                                 or not isConcatenatePrime(p[d], p[e])):
                             continue
-                        minimal = p[a] + p[b] + p[c] + p[d] + p[e]
+                        if minimal and (p[a] + p[b] + p[c] + p[d] + p[e] >
+                                minimal):
+                            minimal = p[a] + p[b] + p[c] + p[d] + p[e]
                         break
     return False, minimal, length
 
